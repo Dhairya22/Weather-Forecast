@@ -1,11 +1,17 @@
+.main-div{
+  display: flex; 
+  flex-direction: row; 
+  column-gap: 30px;
+}
+
 .container{
     top: -100px;
     border: 1px solid black;
     padding: 50px;
     border: 1px solid white;
     border-radius: 50px;
-   background: white;
-   margin-top: 150px;
+    background: white;
+    height: 50vh;
 
    button{
     width: 100%;
@@ -15,6 +21,16 @@
 input{
     padding: 1rem;
     border-radius: 20px;
+}
+
+select{
+  padding: 1rem;
+    border-radius: 20px;
+
+    option{
+      padding: 1rem;
+    border-radius: 20px;
+    }
 }
 
 button {
@@ -39,7 +55,7 @@ hr.style-one {
 /* Wheather Card */
 .box {
     width: 18vw;
-    height: 51vh;
+    height: 50vh;
     border-radius: 50px;
     box-shadow: 0 2px 30px rgb(0 0 0 / 20%);
     background: #a5bbdd;
@@ -109,7 +125,7 @@ hr.style-one {
   .location {
     text-align: center;
     font-weight: 800;
-    margin-top: -35px;
+    margin-top: -60px;
   }
   
   .date {
@@ -133,6 +149,13 @@ hr.style-one {
   }
   
   @media (max-width: 600px) {
+    
+    .res-div{
+      display: flex; 
+      flex-direction: column; 
+      row-gap: 30px;
+    }
+    
     .box {
       width: 90vw;
       height: 80vh;
@@ -152,16 +175,16 @@ hr.style-one {
     }
   }
   
-  @media (max-height: 500px) {
-    .box {
-      height: 80vh;
-      left: 3%;
-    }
+  // @media (max-height: 500px) {
+  //   .box {
+  //     height: 80vh;
+  //     left: 3%;
+  //   }
   
-    .wave {
-      top: 115%;
-    }
-  }
+  //   .wave {
+  //     top: 115%;
+  //   }
+  // }
   
   body > span {
     width: 100vw;
