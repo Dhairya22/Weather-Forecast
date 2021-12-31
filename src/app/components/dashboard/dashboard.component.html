@@ -19,20 +19,18 @@
             <div class="row">
                 <div class="col-lg-12 col-md-6 col-sm-12 col-12 mt-3">
                     <div>
-                        <form [formGroup]="weatherForm">
-                            <!-- <input placeholder="Enter City Name" formControlName="countryName" type="text"
-                                id="form-asdnkandks" class="form-control"> -->
-
-                            <select id="form-asdnkandks" class="form-control" formControlName="countryName" [(ngModel)]="countryName" (change)="selectedCountry()">
-                                <option value="" disabled selected class="form-control">Select Country</option>
-                                <option [value]="countries" *ngFor="let countries of countries" class="form-control" [ngValue]="countries">{{countries.name}}</option>
-                            </select>
-                        </form>
+                        <h5>Country :</h5>
+                        <select id="form-asdnkandks" class="form-control"
+                            [(ngModel)]="countryName" (change)="selectedCountry()">
+                            <option value="" disabled selected class="form-control">Select Country</option>
+                            <option [value]="countries" *ngFor="let countries of countries" class="form-control"
+                                [ngValue]="countries">{{countries.name}}</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-6 col-sm-12 col-12">
                     <button type="button" class="btn-primary mt-4 float-right btn btn-primary"
-                        (click)="getWeatherDetails()" [disabled]="weatherForm.invalid">
+                        (click)="getWeatherDetails()" [disabled]="country === ''">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                             class="bi bi-search" viewBox="0 0 16 16" style="margin-right: 5px;">
                             <path
@@ -53,14 +51,16 @@
                 <img src="../../../assets/images/weather.png" style="width: 150px; height: 100px;" alt="">
             </div>
             <div class="info">
-              <h2 class="location" *ngIf="!errorMssge">{{weatherData.request.query ? weatherData.request.query : 404}} </h2>
-              <p class="date" *ngIf="!errorMssge">{{today}} | {{todayDate}} | {{this.d.getHours()}}: {{this.d.getMinutes()}}</p>
-              <h2 class="temp" *ngIf="!errorMssge">{{weatherData.current.temperature}} &deg;C | {{ferenheitTemp}} &deg;F</h2>
+                <h2 class="location" *ngIf="!errorMssge">{{weatherData.request.query ? weatherData.request.query : 404}}
+                </h2>
+                <p class="date" *ngIf="!errorMssge">{{today}} | {{todayDate}} | {{this.d.getHours()}}:
+                    {{this.d.getMinutes()}}</p>
+                <h2 class="temp" *ngIf="!errorMssge">{{weatherData.current.temperature}} &deg;C | {{ferenheitTemp}}
+                    &deg;F</h2>
 
-              <h2 class="location" *ngIf="errorMssge">404 😕</h2>
-              <h2 class="temp" *ngIf="errorMssge">No Data Found !!!</h2>
+                <h2 class="location" *ngIf="errorMssge">404 😕</h2>
+                <h2 class="temp" *ngIf="errorMssge">No Data Found !!!</h2>
             </div>
-          </div>
+        </div>
     </div>
 </div>
-    

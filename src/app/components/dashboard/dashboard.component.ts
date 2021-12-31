@@ -10,7 +10,6 @@ import countries from '../../../assets/countries.json'
 })
 export class DashboardComponent implements OnInit {
 
-  weatherForm!: FormGroup;
   weatherData: any = [];
   ferenheitTemp: any;
   countries: Array<any> = [];
@@ -31,7 +30,6 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.prepareForm();
     this.getDay();
 
     this.countries = countries;
@@ -58,24 +56,14 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  prepareForm(){
-    this.weatherForm = new FormGroup({
-      countryName: new FormControl('',Validators.required)
-    })
-  }
-
   selectedCountry(){
     this.country = this.countryName.name;
     console.log(this.countryName)
  }
 
   getWeatherDetails(){
-    const { countryName } = this.weatherForm.getRawValue();
-    console.log("🚀 ~ file: dashboard.component.ts ~ line 42 ~ DashboardComponent ~ getWeatherDetails ~ countryName", this.country)
-
     this.apiService.getWeatherDetails(this.country).subscribe(response => {
       this.weatherData = response;
-      console.log("🚀 ~ file: dashboard.component.ts ~ line 78 ~ DashboardComponent ~ this.apiService.getWeatherDetails ~ this.weatherData", this.weatherData)
       if(this.weatherData.success === false){
         this.errorMssge = true;
       } else {
